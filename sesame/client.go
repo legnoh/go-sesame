@@ -6,7 +6,6 @@ import (
 	"fmt"
 	"io"
 	"net/http"
-	"path"
 )
 
 const (
@@ -48,7 +47,7 @@ func (c *Client) post(apiPath string, payload interface{}) (*http.Response, erro
 }
 
 func (c *Client) do(method string, apiPath string, body io.Reader) (*http.Response, error) {
-	url := path.Join(apiEndpoint, apiPath)
+	url := apiEndpoint + apiPath
 	req, _ := http.NewRequest(method, url, body)
 	req.Header.Set("Content-Type", "application/json")
 	req.Header.Set("Authorization", c.AuthToken)
