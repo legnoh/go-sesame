@@ -4,14 +4,14 @@ const (
 	listPath = "/sesames"
 )
 
-type Sesames struct {
-	Sesames []Sesame
-}
-
 type Sesame struct {
-	DeviceId string
+	DeviceId string `json:"device_id"`
 	Serial   string
 	Nickname string
+}
+
+type Sesames struct {
+	Sesames []Sesame
 }
 
 func (c *Client) GetSesameList() (*Sesames, error) {
